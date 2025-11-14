@@ -1,22 +1,15 @@
+import "./globals.css";
 import type { ReactNode } from "react";
 
 export const metadata = {
   title: "DeeDee's Designs",
-  description: "Embroidery quotes, proofs, approvals, and order tracking.",
+  description: "Custom embroidery, digitizing, and apparel.",
 };
 
 export default function RootLayout({ children }: { children: ReactNode }) {
   return (
     <html lang="en">
-      <body
-        style={{
-          margin: 0,
-          fontFamily:
-            'system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif',
-        }}
-      >
-        {children}
-      </body>
+      <body>{children}</body>
     </html>
   );
 }
