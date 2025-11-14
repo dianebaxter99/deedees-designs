@@ -1,1 +1,0 @@
-DeeDee’s Designs — MVP (Patched for Vercel)
