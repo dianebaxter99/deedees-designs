@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import type React from "react";
 
 export default function AdminPage() {
   const [password, setPassword] = useState("");
