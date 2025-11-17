@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState } from "react";
 
 export default function AdminPage() {
   const [password, setPassword] = useState("");
@@ -59,10 +59,7 @@ export default function AdminPage() {
             border: "1px solid #ccc",
           }}
         />
-        <button
-          onClick={loadQuotes}
-          style={{ marginTop: "1rem" }}
-        >
+        <button onClick={loadQuotes} style={{ marginTop: "1rem" }}>
           Login
         </button>
 
@@ -104,32 +101,4 @@ export default function AdminPage() {
                 <td style={td}>{q.status}</td>
                 <td style={td}>
                   <select
-                    value={q.status}
-                    onChange={(e) => updateStatus(q.id, e.target.value)}
-                    style={{ padding: "0.3rem" }}
-                  >
-                    <option value="new">New</option>
-                    <option value="quoted">Quoted</option>
-                    <option value="approved">Approved</option>
-                    <option value="paid">Paid</option>
-                    <option value="completed">Completed</option>
-                  </select>
-                </td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
-      )}
-    </div>
-  );
-}
-const th: React.CSSProperties = {
-  borderBottom: "1px solid #ddd",
-  padding: "0.5rem",
-  textAlign: "left",
-};
-
-const td: React.CSSProperties = {
-  borderBottom: "1px solid #eee",
-  padding: "0.5rem",
-};
+                    va
