@@ -14,11 +14,12 @@ export default function AdminPage() {
     setLoading(true);
     try {
       const res = await fetch("/api/admin/quotes", {
-        headers: { Authorization: `Bearer ${password}` },
+        headers: {
+          Authorization: `Bearer ${password}`,
+        },
       });
 
       if (!res.ok) throw new Error("Unauthorized");
-
       const data = await res.json();
       setQuotes(data.quotes);
       setAuthed(true);
@@ -46,7 +47,6 @@ export default function AdminPage() {
     return (
       <div style={{ maxWidth: 400, margin: "80px auto", textAlign: "center" }}>
         <h2>Admin Login</h2>
-
         <input
           type="password"
           placeholder="Enter admin password"
@@ -60,7 +60,6 @@ export default function AdminPage() {
             border: "1px solid #ccc",
           }}
         />
-
         <button onClick={loadQuotes} style={{ marginTop: "1rem" }}>
           Login
         </button>
@@ -94,7 +93,6 @@ export default function AdminPage() {
               <th style={th}>Actions</th>
             </tr>
           </thead>
-
           <tbody>
             {quotes.map((q) => (
               <tr key={q.id}>
@@ -102,7 +100,6 @@ export default function AdminPage() {
                 <td style={td}>{q.email}</td>
                 <td style={td}>{q.serviceType}</td>
                 <td style={td}>{q.status}</td>
-
                 <td style={td}>
                   <select
                     value={q.status}
@@ -125,11 +122,10 @@ export default function AdminPage() {
   );
 }
 
-// FIXED TYPES — BUILD WILL PASS
 const th: React.CSSProperties = {
   borderBottom: "1px solid #ddd",
   padding: "0.5rem",
-  textAlign: "left" as const, // ← important fix!
+  textAlign: "left",
 };
 
 const td: React.CSSProperties = {
