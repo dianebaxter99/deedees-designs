@@ -125,7 +125,7 @@ export default function AdminPage() {
 const th: React.CSSProperties = {
   borderBottom: "1px solid #ddd",
   padding: "0.5rem",
-  textAlign: "left",
+  textAlign: "left" as React.CSSProperties["textAlign"],
 };
 
 const td: React.CSSProperties = {
