@@ -19,7 +19,7 @@ export async function GET(req: Request) {
   return NextResponse.json({ quotes: data });
 }
 
-// Create new quote (for your website form)
+// CREATE a quote
 export async function POST(req: Request) {
   const body = await req.json();
 
