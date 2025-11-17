@@ -101,9 +101,4 @@ export default function AdminPage() {
                 <td style={td}>{q.serviceType}</td>
                 <td style={td}>{q.status}</td>
                 <td style={td}>
-                  <select
-                    value={q.status}
-                    onChange={(e) => updateStatus(q.id, e.target.value)}
-                    style={{ padding: "0.3rem" }}
-                  >
-                    <option value="new">New</option>
+                  <se
