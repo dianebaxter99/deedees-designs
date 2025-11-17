@@ -126,13 +126,13 @@ export default function AdminPage() {
 // FIXED STYLE OBJECTS
 // ----------------------
 
-const th = {
+const th: any = {
   borderBottom: "1px solid #ddd",
   padding: "0.5rem",
   textAlign: "left",
 };
 
-const td = {
+const td: any = {
   borderBottom: "1px solid #eee",
   padding: "0.5rem",
 };
