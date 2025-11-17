@@ -1,7 +1,6 @@
 "use client";
 
 import { useState } from "react";
-import type React from "react";
 
 export default function AdminPage() {
   const [password, setPassword] = useState("");
@@ -20,9 +19,11 @@ export default function AdminPage() {
       });
 
       if (!res.ok) throw new Error("Unauthorized");
+
       const data = await res.json();
       setQuotes(data.quotes);
       setAuthed(true);
+      setError(null);
     } catch {
       setError("Invalid password or server error.");
       setAuthed(false);
@@ -122,13 +123,17 @@ export default function AdminPage() {
   );
 }
 
-const th: React.CSSProperties = {
+// ------------------------------
+// FIXED STYLE OBJECTS (NO TS TYPES)
+// ------------------------------
+
+const th = {
   borderBottom: "1px solid #ddd",
   padding: "0.5rem",
-  textAlign: "left" as React.CSSProperties["textAlign"],
+  textAlign: "left",
 };
 
-const td: React.CSSProperties = {
+const td = {
   borderBottom: "1px solid #eee",
   padding: "0.5rem",
 };
