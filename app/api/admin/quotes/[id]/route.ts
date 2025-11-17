@@ -1,7 +1,10 @@
 import { NextResponse } from "next/server";
 import { supabaseAdmin } from "@/lib/supabaseAdmin";
 
-export async function PUT(req: Request, { params }: { params: { id: string } }) {
+export async function PUT(
+  req: Request,
+  { params }: { params: { id: string } }
+) {
   const auth = req.headers.get("authorization");
 
   if (!auth || auth !== "Bearer admin123") {
@@ -19,7 +22,10 @@ export async function PUT(req: Request, { params }: { params: { id: string } }) 
 
   if (error) {
     console.error(error);
-    return NextResponse.json({ error: "Database update failed" }, { status: 500 });
+    return NextResponse.json(
+      { error: "Database update failed" },
+      { status: 500 }
+    );
   }
 
   return NextResponse.json({ success: true, quote: data });
