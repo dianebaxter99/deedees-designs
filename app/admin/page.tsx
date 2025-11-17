@@ -19,11 +19,9 @@ export default function AdminPage() {
       });
 
       if (!res.ok) throw new Error("Unauthorized");
-
       const data = await res.json();
       setQuotes(data.quotes);
       setAuthed(true);
-      setError(null);
     } catch {
       setError("Invalid password or server error.");
       setAuthed(false);
@@ -87,21 +85,21 @@ export default function AdminPage() {
         >
           <thead>
             <tr>
-              <th style={th}>Name</th>
-              <th style={th}>Email</th>
-              <th style={th}>Service</th>
-              <th style={th}>Status</th>
-              <th style={th}>Actions</th>
+              <th style={{ borderBottom: "1px solid #ddd", padding: "0.5rem", textAlign: "left" }}>Name</th>
+              <th style={{ borderBottom: "1px solid #ddd", padding: "0.5rem", textAlign: "left" }}>Email</th>
+              <th style={{ borderBottom: "1px solid #ddd", padding: "0.5rem", textAlign: "left" }}>Service</th>
+              <th style={{ borderBottom: "1px solid #ddd", padding: "0.5rem", textAlign: "left" }}>Status</th>
+              <th style={{ borderBottom: "1px solid #ddd", padding: "0.5rem", textAlign: "left" }}>Actions</th>
             </tr>
           </thead>
           <tbody>
             {quotes.map((q) => (
               <tr key={q.id}>
-                <td style={td}>{q.name}</td>
-                <td style={td}>{q.email}</td>
-                <td style={td}>{q.serviceType}</td>
-                <td style={td}>{q.status}</td>
-                <td style={td}>
+                <td style={{ borderBottom: "1px solid #eee", padding: "0.5rem" }}>{q.name}</td>
+                <td style={{ borderBottom: "1px solid #eee", padding: "0.5rem" }}>{q.email}</td>
+                <td style={{ borderBottom: "1px solid #eee", padding: "0.5rem" }}>{q.serviceType}</td>
+                <td style={{ borderBottom: "1px solid #eee", padding: "0.5rem" }}>{q.status}</td>
+                <td style={{ borderBottom: "1px solid #eee", padding: "0.5rem" }}>
                   <select
                     value={q.status}
                     onChange={(e) => updateStatus(q.id, e.target.value)}
@@ -122,18 +120,3 @@ export default function AdminPage() {
     </div>
   );
 }
-
-// ------------------------------
-// FIXED STYLE OBJECTS (NO TS TYPES)
-// ------------------------------
-
-const th = {
-  borderBottom: "1px solid #ddd",
-  padding: "0.5rem",
-  textAlign: "left",
-};
-
-const td = {
-  borderBottom: "1px solid #eee",
-  padding: "0.5rem",
-};
