@@ -134,3 +134,13 @@ const td = {
   borderBottom: "1px solid #eee",
   padding: "0.5rem",
 };
+const th: React.CSSProperties = {
+  borderBottom: "1px solid #ddd",
+  padding: "0.5rem",
+  textAlign: "left",
+};
+
+const td: React.CSSProperties = {
+  borderBottom: "1px solid #eee",
+  padding: "0.5rem",
+};
