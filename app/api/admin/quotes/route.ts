@@ -2,43 +2,39 @@ import { NextResponse } from "next/server";
 import { supabaseAdmin } from "../../../../lib/supabaseAdmin";
 
 // GET all quotes
-export async function GET(req: Request) {
-  const auth = req.headers.get("authorization");
-
-  if (!auth || auth !== "Bearer admin123") {
-    return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
-  }
-
-  const { data, error } = await supabaseAdmin.from("quotes").select("*");
+export async function GET() {
+  const { data, error } = await supabaseAdmin
+    .from("quotes")
+    .select("*")
+    .order("created_at", { ascending: false });
 
   if (error) {
-    console.error(error);
-    return NextResponse.json({ error: "Database error" }, { status: 500 });
+    return NextResponse.json(
+      { error: error.message },
+      { status: 500 }
+    );
   }
 
-  return NextResponse.json({ quotes: data });
+  return NextResponse.json(data);
 }
 
-// CREATE a quote
-export async function POST(req: Request) {
+// UPDATE a quote status
+export async function PUT(req) {
   const body = await req.json();
+
+  const { id, status } = body;
 
   const { data, error } = await supabaseAdmin
     .from("quotes")
-    .insert({
-      name: body.name,
-      email: body.email,
-      phone: body.phone,
-      service_type: body.serviceType,
-      description: body.description,
-    })
-    .select()
-    .single();
+    .update({ status })
+    .eq("id", id);
 
   if (error) {
-    console.error(error);
-    return NextResponse.json({ error: "Insert failed" }, { status: 500 });
+    return NextResponse.json(
+      { error: error.message },
+      { status: 500 }
+    );
   }
 
-  return NextResponse.json({ success: true, quote: data });
+  return NextResponse.json(data);
 }
