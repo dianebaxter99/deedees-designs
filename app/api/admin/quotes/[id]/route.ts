@@ -1,10 +1,5 @@
 import { NextResponse } from "next/server";
-
-// Temporary in-memory data
-let quotes = [
-  { id: "1", name: "John", email: "john@email.com", serviceType: "Embroidery", status: "new" },
-  { id: "2", name: "Sarah", email: "sarah@email.com", serviceType: "Digitizing", status: "quoted" }
-];
+import { quotes } from "../data";
 
 export async function PUT(req: Request, { params }: any) {
   const auth = req.headers.get("authorization");
