@@ -23,7 +23,7 @@ export default function AdminPage() {
       const data = await res.json();
       setQuotes(data.quotes);
       setAuthed(true);
-    } catch (err) {
+    } catch {
       setError("Invalid password or server error.");
       setAuthed(false);
     }
@@ -102,4 +102,8 @@ export default function AdminPage() {
                 <td style={td}>{q.status}</td>
                 <td style={td}>
                   <select
-                    va
+                    value={q.status}
+                    onChange={(e) => updateStatus(q.id, e.target.value)}
+                    style={{ padding: "0.3rem" }}
+                  >
+                    <option value="new">New</option>
